@@ -6,7 +6,7 @@ VALUES
     ('Sales'),
     ('Engineering'),
     ('Finance'),
-    ('HR');
+    ('Legal');
 
 INSERT INTO role
     (title, salary, department_id)
