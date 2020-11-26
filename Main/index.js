@@ -328,7 +328,7 @@ async function removeJob() {
   const roles = await db.findAllJobs();
 
   const roleChoices = roles.map(({ id, title }) => ({
-    name: title,
+    name: name,
     value: id
   }));
 
