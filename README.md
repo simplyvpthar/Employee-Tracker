@@ -74,4 +74,4 @@ You are required to submit the following:
 
 * The URL of the GitHub 
 
-* A video demonstrating the entirety of the app's functionality
+* A video demonstrating the entirety of the app's functionality:  https://drive.google.com/file/d/1ncJF1VFe-O8rXuMIDSsuaXjklfYOmLod/view
