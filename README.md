@@ -1,12 +1,10 @@
 # Unit 12 MySQL Homework: Employee Tracker
 
-Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. In this homework assignment, your challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.
+Creating interfaces that make it easy for non-developers to view and interact with information stored in databases, known as **C**ontent **M**anagement **S**ystems. The homework assignment is to design and build a solution for managing a company's employees using node, inquirer, and MySQL.
 
 ## Instructions
 
-Design the following database schema containing three tables:
-
-![Database Schema](Assets/schema.png)
+Design the database schema containing three tables:
 
 * **department**:
 
@@ -36,7 +34,7 @@ Build a command-line application that at a minimum allows the user to:
 
   * Update employee roles
 
-Bonus points if you're able to:
+Bonus points if able to:
 
   * Update employee managers
 
@@ -46,15 +44,7 @@ Bonus points if you're able to:
 
   * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
 
-We can frame this challenge as follows:
-
-```
-As a business owner
-I want to be able to view and manage the departments, roles, and employees in my company
-So that I can organize and plan my business
-```
-
-How do you deliver this? Here are some guidelines:
+Used the following guidelines:
 
 * Use the [MySQL](https://www.npmjs.com/package/mysql) NPM package to connect to your MySQL database and perform queries.
 
@@ -62,21 +52,6 @@ How do you deliver this? Here are some guidelines:
 
 * Use [console.table](https://www.npmjs.com/package/console.table) to print MySQL rows to the console. There is a built-in version of `console.table`, but the NPM package formats the data a little better for our purposes.
 
-* You may wish to have a separate file containing functions for performing specific SQL queries you'll need to use. Could a constructor function or a class be helpful for organizing these?
-
-* You will need to perform a variety of SQL JOINS to complete this assignment, and it's recommended you review the week's activities if you need a refresher on this.
-
-![Employee Tracker](Assets/employee-tracker.gif)
-
-### Hints
-
-* You may wish to include a `seed.sql` file to pre-populate your database. This will make development of individual features much easier.
-
-* Focus on getting the basic functionality completed before working on more advanced features.
-
-* Review the week's activities for a refresher on MySQL.
-
-* Check out [SQL Bolt](https://sqlbolt.com/) for some extra MySQL help.
 
 ## Minimum Requirements
 
@@ -93,16 +68,10 @@ How do you deliver this? Here are some guidelines:
   * Update employee roles
 
 
-
-
 ## Submission on BCS
 
 You are required to submit the following:
 
-* The URL of the GitHub repository
+* The URL of the GitHub 
 
-* A video demonstrating the entirety of the app's functionality 
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
-# Employee-Tracker
+* A video demonstrating the entirety of the app's functionality
