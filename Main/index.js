@@ -170,7 +170,7 @@ async function listEEbyMgr() {
   console.log("\n");
 
   if (employees.length === 0) {
-    console.log("There are no subordinates reporting to the manager.");
+    console.log("There are no subordinates reporting to this manager.");
   } else {
     console.table(employees);
   }
