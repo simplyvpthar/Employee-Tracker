@@ -271,7 +271,7 @@ async function UpdateEEmgr() {
       type: "list",
       name: "managerId",
       message:
-        "Which employee do you want to set as manager for the employee?",
+        "Which employee do you want to set as a manager?",
       choices: managerChoices
     }
   ]);
