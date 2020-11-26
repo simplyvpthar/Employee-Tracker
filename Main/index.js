@@ -389,7 +389,7 @@ async function deleteDept() {
     choices: departmentChoices
   });
 
-  await db.removeDepartment(departmentId);
+  await db.deleteDept(departmentId);
 
   console.log(`Removed department from the database`);
 
