@@ -19,7 +19,7 @@ async function loadOptions() {
     {
       type: "list",
       name: "options",
-      message: "Please select one of the options.",
+      message: "Please select one of the following options.",
       choices: [
         {
           name: "View All IMPACT Employees",
