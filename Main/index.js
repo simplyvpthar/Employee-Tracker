@@ -70,7 +70,7 @@ async function loadOptions() {
           value: "ADD_DEPT"
         },
         {
-          name: "Delete Department",
+          name: "Delete a Department",
           value: "DELETE_DEPT"
         },
         {
