@@ -58,7 +58,7 @@ async function loadOptions() {
           value: "ADD_JOB"
         },
         {
-          name: "Delete Job Title",
+          name: "Delete a Job Title",
           value: "DELETE_JOB"
         },
         {
