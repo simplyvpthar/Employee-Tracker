@@ -31,47 +31,47 @@ async function loadOptions() {
         },
         {
           name: "View All IMPACT Employees By Manager",
-          value: "VIEW_EMPLOYEES_BY_MANAGER"
+          value: "ListEEbyMgr"
         },
         {
           name: "Add an IMPACT Employee",
-          value: "ADD_EMPLOYEE"
+          value: "addNewEE"
         },
         {
           name: "Remove an IMPACT Employee",
-          value: "REMOVE_EMPLOYEE"
+          value: "deleteEE"
         },
         {
-          name: "Update Employee Role",
-          value: "UPDATE_EMPLOYEE_ROLE"
+          name: "Update Employee Job Title",
+          value: "UPDATE_EE_JOB"
         },
         {
           name: "Update Employee Manager",
-          value: "UPDATE_EMPLOYEE_MANAGER"
+          value: "UPDATE_EE_MGR"
         },
         {
           name: "View All Roles",
-          value: "VIEW_ROLES"
+          value: "VIEW_JOB"
         },
         {
           name: "Add Role",
-          value: "ADD_ROLE"
+          value: "ADD_JOB"
         },
         {
-          name: "Remove Role",
-          value: "REMOVE_ROLE"
+          name: "Remove Job Title",
+          value: "DELETE_JOB"
         },
         {
           name: "View All Departments",
-          value: "VIEW_DEPARTMENTS"
+          value: "LIST_DEPT"
         },
         {
           name: "Add a New Department",
-          value: "ADD_DEPARTMENT"
+          value: "ADD_DEPT"
         },
         {
           name: "Remove Department",
-          value: "REMOVE_DEPARTMENT"
+          value: "DELETE_DEPT"
         },
         {
           name: "Exit IMPACT Employee Tracker",
@@ -81,41 +81,41 @@ async function loadOptions() {
     }
   ]);
 
-  // Call the function selected by the user 
+  // Call the function picked by the user 
   switch (options) {
     case "LIST_EMPLOYEES":
       return listEE();
     case "LIST_EE_BY_DEPT":
       return ListEEbyDept();
-    case "VIEW_EMPLOYEES_BY_MANAGER":
-      return viewEmployeesByManager();
-    case "ADD_EMPLOYEE":
-      return addEmployee();
-    case "REMOVE_EMPLOYEE":
-      return removeEmployee();
-    case "UPDATE_EMPLOYEE_ROLE":
-      return updateEmployeeRole();
-    case "UPDATE_EMPLOYEE_MANAGER":
-      return updateEmployeeManager();
-    case "VIEW_DEPARTMENTS":
-      return viewDepartments();
-    case "ADD_DEPARTMENT":
-      return addDepartment();
-    case "REMOVE_DEPARTMENT":
-      return removeDepartment();
-    case "VIEW_ROLES":
-      return viewRoles();
-    case "ADD_ROLE":
-      return addRole();
-    case "REMOVE_ROLE":
-      return removeRole();
+    case "ListEEbyMgr":
+      return listEEbyMgr();
+    case "addNewEE":
+      return addNewEE();
+    case "deleteEE":
+      return deleteEE();
+    case "UPDATE_EE_JOB":
+      return UpdateEEJob();
+    case "UPDATE_EE_MGR":
+      return UpdateEEmgr();
+    case "LIST_DEPT":
+      return listDepts();
+    case "ADD_DEPT":
+      return addDept();
+    case "DELETE_DEPT":
+      return deleteDept();
+    case "VIEW_JOB":
+      return listJob();
+    case "ADD_JOB":
+      return addJob();
+    case "DELETE_JOB":
+      return removeJob();
     default:
       return quit();
   }
 }
 
 async function listEE() {
-  const employees = await db.findAllEmployees();
+  const employees = await db.findAllEEs();
 
   console.log("\n");
   console.table(employees);
@@ -124,7 +124,7 @@ async function listEE() {
 }
 
 async function ListEEbyDept() {
-  const departments = await db.findAllDepartments();
+  const departments = await db.findAllDepts();
 
   const departmentChoices = departments.map(({ id, name }) => ({
     name: name,
@@ -140,7 +140,7 @@ async function ListEEbyDept() {
     }
   ]);
 
-  const employees = await db.findAllEmployeesByDepartment(departmentId);
+  const employees = await db.findAllEEsByDept(departmentId);
 
   console.log("\n");
   console.table(employees);
@@ -148,8 +148,8 @@ async function ListEEbyDept() {
   loadOptions();
 }
 
-async function viewEmployeesByManager() {
-  const managers = await db.findAllEmployees();
+async function listEEbyMgr() {
+  const managers = await db.findAllEEs();
 
   const managerChoices = managers.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
@@ -165,7 +165,7 @@ async function viewEmployeesByManager() {
     }
   ]);
 
-  const employees = await db.findAllEmployeesByManager(managerId);
+  const employees = await db.findAllEEsByMgr(managerId);
 
   console.log("\n");
 
@@ -178,8 +178,8 @@ async function viewEmployeesByManager() {
   loadOptions();
 }
 
-async function removeEmployee() {
-  const employees = await db.findAllEmployees();
+async function deleteEE() {
+  const employees = await db.findAllEEs();
 
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
@@ -195,15 +195,15 @@ async function removeEmployee() {
     }
   ]);
 
-  await db.removeEmployee(employeeId);
+  await db.deleteEE(employeeId);
 
   console.log("Delete employee from the database");
 
   loadOptions();
 }
 
-async function updateEmployeeRole() {
-  const employees = await db.findAllEmployees();
+async function UpdateEEJob() {
+  const employees = await db.findAllEEs();
 
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
@@ -219,7 +219,7 @@ async function updateEmployeeRole() {
     }
   ]);
 
-  const roles = await db.findAllRoles();
+  const roles = await db.findAllJobs();
 
   const roleChoices = roles.map(({ id, title }) => ({
     name: title,
@@ -235,15 +235,15 @@ async function updateEmployeeRole() {
     }
   ]);
 
-  await db.updateEmployeeRole(employeeId, roleId);
+  await db.updateEEJob(employeeId, roleId);
 
   console.log("Updated employee's role");
 
   loadOptions();
 }
 
-async function updateEmployeeManager() {
-  const employees = await db.findAllEmployees();
+async function UpdateEEmgr() {
+  const employees = await db.findAllEEs();
 
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
@@ -259,7 +259,7 @@ async function updateEmployeeManager() {
     }
   ]);
 
-  const managers = await db.findAllPossibleManagers(employeeId);
+  const managers = await db.findAllMgrs(employeeId);
 
   const managerChoices = managers.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
@@ -276,15 +276,15 @@ async function updateEmployeeManager() {
     }
   ]);
 
-  await db.updateEmployeeManager(employeeId, managerId);
+  await db.updateEEMgr(employeeId, managerId);
 
   console.log("Updated employee's manager");
 
   loadOptions();
 }
 
-async function viewRoles() {
-  const roles = await db.findAllRoles();
+async function listJob() {
+  const roles = await db.findAllJobs();
 
   console.log("\n");
   console.table(roles);
@@ -292,8 +292,8 @@ async function viewRoles() {
   loadOptions();
 }
 
-async function addRole() {
-  const departments = await db.findAllDepartments();
+async function addJob() {
+  const departments = await db.findAllDepts();
 
   const departmentChoices = departments.map(({ id, name }) => ({
     name: name,
@@ -317,15 +317,15 @@ async function addRole() {
     }
   ]);
 
-  await db.createRole(role);
+  await db.createJob(role);
 
   console.log(`Added ${role.title} to the database`);
 
   loadOptions();
 }
 
-async function removeRole() {
-  const roles = await db.findAllRoles();
+async function removeJob() {
+  const roles = await db.findAllJobs();
 
   const roleChoices = roles.map(({ id, title }) => ({
     name: title,
@@ -342,15 +342,15 @@ async function removeRole() {
     }
   ]);
 
-  await db.removeRole(roleId);
+  await db.deleteJob(roleId);
 
   console.log("Removed job title from the database");
 
   loadOptions();
 }
 
-async function viewDepartments() {
-  const departments = await db.findAllDepartments();
+async function listDepts() {
+  const departments = await db.findAllDepts();
 
   console.log("\n");
   console.table(departments);
@@ -358,7 +358,7 @@ async function viewDepartments() {
   loadOptions();
 }
 
-async function addDepartment() {
+async function addDept() {
   const department = await prompt([
     {
       name: "name",
@@ -366,15 +366,15 @@ async function addDepartment() {
     }
   ]);
 
-  await db.createDepartment(department);
+  await db.createDept(department);
 
   console.log(`Added ${department.name} to the database`);
 
   loadOptions();
 }
 
-async function removeDepartment() {
-  const departments = await db.findAllDepartments();
+async function deleteDept() {
+  const departments = await db.findAllDepts();
 
   const departmentChoices = departments.map(({ id, name }) => ({
     name: name,
@@ -396,9 +396,9 @@ async function removeDepartment() {
   loadOptions();
 }
 
-async function addEmployee() {
-  const roles = await db.findAllRoles();
-  const employees = await db.findAllEmployees();
+async function addNewEE() {
+  const roles = await db.findAllJobs();
+  const employees = await db.findAllEEs();
 
   const employee = await prompt([
     {
@@ -440,7 +440,7 @@ async function addEmployee() {
 
   employee.manager_id = managerId;
 
-  await db.createEmployee(employee);
+  await db.createEE(employee);
 
   console.log(
     `Added ${employee.first_name} ${employee.last_name} to the database`
@@ -450,6 +450,6 @@ async function addEmployee() {
 }
 
 function quit() {
-  console.log("Thank you for using IMPACT Employee Manager!");
+  console.log("You are now leaving.  Thank you for using IMPACT Employee Manager!");
   process.exit();
 }
