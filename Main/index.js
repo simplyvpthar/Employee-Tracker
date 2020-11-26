@@ -5,7 +5,7 @@ require("console.table");
 
 init();
 
-// Display logo, load options
+// Display the company logo and load options
 function init() {
   const logoText = logo({ name: "IMPACT Employee Manager" }).render();
 
@@ -58,7 +58,7 @@ async function loadOptions() {
           value: "ADD_JOB"
         },
         {
-          name: "Remove Job Title",
+          name: "Delete Job Title",
           value: "DELETE_JOB"
         },
         {
@@ -70,7 +70,7 @@ async function loadOptions() {
           value: "ADD_DEPT"
         },
         {
-          name: "Remove Department",
+          name: "Delete Department",
           value: "DELETE_DEPT"
         },
         {
@@ -170,7 +170,7 @@ async function listEEbyMgr() {
   console.log("\n");
 
   if (employees.length === 0) {
-    console.log("The manager has no direct reports.");
+    console.log("There are no subordinates reporting to the manager.");
   } else {
     console.table(employees);
   }
@@ -328,7 +328,7 @@ async function removeJob() {
   const roles = await db.findAllJobs();
 
   const roleChoices = roles.map(({ id, title }) => ({
-    name: name,
+    name: title,
     value: id
   }));
 
@@ -337,7 +337,7 @@ async function removeJob() {
       type: "list",
       name: "roleId",
       message:
-        "Which job title do you want to remove? (Warning: This will also remove the employees)",
+        "Which job title do you want to remove?",
       choices: roleChoices
     }
   ]);
@@ -385,7 +385,7 @@ async function deleteDept() {
     type: "list",
     name: "departmentId",
     message:
-      "Which department would you like to delete? (Warning: This will also remove the deleted job title and employees)",
+      "Which department would you like to delete?",
     choices: departmentChoices
   });
 
