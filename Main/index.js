@@ -15,7 +15,7 @@ function init() {
 }
 
 async function loadOptions() {
-  const { options } = await action([
+  const { options } = await prompt([
     {
       type: "list",
       name: "options",
