@@ -70,8 +70,8 @@ Used the following guidelines:
 
 ## Submission on BCS
 
-You are required to submit the following:
+The following are required submitted to BCS:
 
-* The URL of the GitHub 
+* The URL of the GitHub:   https://github.com/simplyvpthar/Employee-Tracker
 
 * A video demonstrating the entirety of the app's functionality:  https://drive.google.com/file/d/1ncJF1VFe-O8rXuMIDSsuaXjklfYOmLod/view
